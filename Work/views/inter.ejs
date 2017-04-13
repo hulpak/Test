@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+    <head>
+        <title><%= title %></title>
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+    </head>
+
+    <body>
+        <h1><%= title %></h1>
+        <ol>
+            <% _.each(items, function(topC) { %>
+            <li>
+                <h1><%= topC.name %></h1>
+                <p><%= topC.page_description %></p>
+                <p><%= topC.price %></p>
+                <div>
+                    <ol>
+                        <% _.each(topC.image_groups, function(subB) { %>
+                        <li>
+                              <ol>
+                                  <% _.each(subB.images, function(subA) { %>
+                                  <li>
+                                      <h2><%= subA.title %></h1>
+                                      <% if (subA.link) { %>
+                                      <div>
+                                          <img src="/images/<%= subA.link %>">
+                                      </div>
+                                      <% } %>
+                                  </li>
+                                  <% }); %>
+                              </ol>
+                        </li>
+                        <% }); %>
+                    </ol>
+                </div>
+            </li>
+            <% }); %>
+        </ol>
+    </body>
+</html>
